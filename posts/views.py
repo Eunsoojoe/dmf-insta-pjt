@@ -47,3 +47,22 @@ def comment_create(request, post_id):
 
         return redirect('posts:index')
 
+@login_required
+def like(request, post_id):
+    user = request.user
+    post = Post.objects.get(id=post_id)
+
+
+
+    # 이미 좋아요 버튼을 누른 경우
+    # if post in user.like_posts.all():
+    if user in post.like_users.all():
+        user.like_posts.remove(post)
+        # post.like_users.remove(user)
+
+    else:
+        # user.like_posts.add(post)
+        post.like_users.add(user)
+
+    # 아직 좋아요 버튼을 누르지 않은 경우
+    return redirect('posts:index')
