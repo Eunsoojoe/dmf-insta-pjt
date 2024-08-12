@@ -23,6 +23,14 @@
               </div>  
             </div>
           </form>
+          {% for comment in post.comment_set.all %}
+            <li>
+              {{comment.user}} : {{comment.cotntent}}
+            </li>
+          {% endfor %}
+
+
+
       </div>
 
     </div>
