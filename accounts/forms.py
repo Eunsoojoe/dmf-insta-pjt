@@ -5,6 +5,7 @@ class CustomUserCreationForm(UserCreationForm):
     class Meta():
         model = User
         fields = ('username', 'profile_image', )
+        # fields = '__all__'
 
 
 class CustomAuthenticationForm(AuthenticationForm):
